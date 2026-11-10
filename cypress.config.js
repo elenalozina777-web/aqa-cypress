@@ -6,6 +6,7 @@ export default defineConfig({
     viewportWidth: 1366,
     viewportHeight: 768,
     watchForFileChanges: false,
+    
   },
   
 });
