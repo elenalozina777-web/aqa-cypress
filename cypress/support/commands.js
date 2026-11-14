@@ -1,15 +1,14 @@
 
 Cypress.Commands.add("login", (email, password) => {
   cy.get("#signinEmail").clear().type(email);
-  cy.get("#signinPassword").clear().type(password, { sensitive: true });
-  cy.get(".modal-footer>button.btn.btn-primary").click();
+  cy.get("#signinPassword").clear().type(password);
+  cy.get(".modal-footer>button.btn.btn-primary").contains('Login').click();
 });
 
 Cypress.Commands.overwrite("type", (originalFn, element, text, options) => {
   if (options && options.sensitive) {
-    // turn off original log
+  
     options.log = false;
-    // create our own log with masked message
     Cypress.log({
       $el: element,
       name: "type",

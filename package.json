@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:env1": "cypress run --browser chrome --config-file cypress.env1.config.js",
+    "test:env2": "cypress run --browser chrome --config-file cypress.env2.config.js",
+    "open:env1": "cypress open --config-file cypress.env1.config.js",
+    "open:env2": "cypress open --config-file cypress.env2.config.js"
+   
   },
   "repository": {
     "type": "git",
@@ -20,6 +25,7 @@
   "homepage": "https://github.com/elenalozina777-web/aqa-cypress#readme",
   "devDependencies": {
     "@faker-js/faker": "^10.6.0",
-    "cypress": "^16.2.0"
+    "cypress": "^16.2.0",
+    "mochawesome": "^8.1.1"
   }
 }
