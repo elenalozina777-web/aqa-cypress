@@ -56,7 +56,7 @@ class GaragePage {
   }
 
   open() {
-    cy.visit("/panel/garage", { failOnStatusCode: false });
+    cy.visit("/panel/garage"); //{ failOnStatusCode: false }
     return this;
   }
 }

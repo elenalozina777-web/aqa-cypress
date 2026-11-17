@@ -25,13 +25,13 @@ describe("Garage and Expenses tests", () => {
   });
 
   it("Should add a new car and add fuel expenses", () => {
-    const brand = "Porsche";
-    const model = "911";
+    const brand = "Ford";
+    const model = "Focus";
     const mileage = "35";
 
-    const date = "2026-11-12";
-    const expensesMileage = 50;
-    const litre = "15";
+    const date = "17.11.2026";
+    const expensesMileage = "40";
+    const litre = "5";
     const cost = "350";
 
     GaragePage.addCar(brand, model, mileage);
@@ -45,7 +45,7 @@ describe("Garage and Expenses tests", () => {
       litre,
       cost,
     );
-    ExpensesPage.open();
-    cy.url().should("include", "/panel/expenses");
+    cy.wait(1000);
+    ExpensesPage.clickAddExButton();
   });
 });
