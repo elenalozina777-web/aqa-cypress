@@ -1,13 +1,11 @@
-
 Cypress.Commands.add("login", (email, password) => {
   cy.get("#signinEmail").clear().type(email);
   cy.get("#signinPassword").clear().type(password);
-  cy.get(".modal-footer>button.btn.btn-primary").contains('Login').click();
+  cy.get(".modal-footer>button.btn.btn-primary").contains("Login").click();
 });
 
 Cypress.Commands.overwrite("type", (originalFn, element, text, options) => {
   if (options && options.sensitive) {
-  
     options.log = false;
     Cypress.log({
       $el: element,
@@ -19,6 +17,14 @@ Cypress.Commands.overwrite("type", (originalFn, element, text, options) => {
   return originalFn(element, text, options);
 });
 
+/*Cypress.Commands.add("createExpense", (expenseData) => {
+  return cy.request({
+    method: "POST",
+    url: "/api/expenses",
+    body: expenseData,
+  });
+});
+*/
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
