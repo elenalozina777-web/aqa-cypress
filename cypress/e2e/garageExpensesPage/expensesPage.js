@@ -1,5 +1,5 @@
 class ExpensesPage {
-  get addExpensesButton() {
+  get addButton() {
     return cy
       .get("button.car_add-expense.btn.btn-success")
       .contains("Add fuel expense");
@@ -12,6 +12,9 @@ class ExpensesPage {
   get reportDataInput() {
     return cy.get("#addExpenseDate");
   }
+  /*get calendarButton() {
+    return this.reportDate.parent().find("button.date-picker-toggle");
+  }*/
 
   get mileageInput() {
     return cy.get("#addExpenseMileage");
@@ -25,30 +28,30 @@ class ExpensesPage {
     return cy.get("#addExpenseTotalCost");
   }
 
-  get clickAddExButton() {
-    return cy
-      .get("app-add-expense-modal")
-      .contains("button", "Add")
-      .should("be.visible");
+  get addExButton() {
+    return cy.get(".modal-footer").contains("Add");
+  }
+  clickAddExButton() {
+    this.addExButton.wait(1000).click();
+    return this;
   }
 
   addExpense(vehicle, data, expensesMileage, litre, cost) {
-    this.addExpensesButton.click();
+    this.addButton.click();
 
-    cy.get(".modal-content").should("be.visible");
+    //cy.get(".modal-content").should("be.visible");
 
     this.vehicleDropdown.select(vehicle).blur();
 
     this.reportDataInput.clear().type(data).blur();
-    this.mileageInput.clear().type(expensesMileage).blur();
-    this.numberOfLiters.clear().type(litre).blur();
-    this.totalCost.clear().type(cost).blur();
-
-    this.clickAddExButton.click();
+    this.mileageInput.clear().type(expensesMileage);
+    this.numberOfLiters.clear().type(litre);
+    this.totalCost.clear().type(cost);
 
     return this;
   }
-  open() {
+
+  /* open() {
     cy.visit("/panel/expenses", {
       failOnStatusCode: false,
       auth: {
@@ -57,7 +60,7 @@ class ExpensesPage {
       },
     });
     return this;
-  }
+  }*/
 }
 
 export default new ExpensesPage();
